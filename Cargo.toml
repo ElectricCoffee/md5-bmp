@@ -7,7 +7,7 @@ description = "A tool for converting text into a bmp representation of their md5
 repository = "https://github.com/ElectricCoffee/md5-bmp.git"
 homepage = "https://github.com/ElectricCoffee/md5-bmp"
 
-licence = "BSD-3-Clause"
+license = "BSD-3-Clause"
 readme = "README.md"
 
 keywords = ["bmp", "image", "md5"]
