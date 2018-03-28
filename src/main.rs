@@ -1,6 +1,7 @@
 extern crate md5;
 extern crate bmp;
 use bmp::consts::BLACK;
+use std::env;
 
 // Turns a digest into a 16-element array of pixels
 fn make_pixels(digest: md5::Digest) -> [bmp::Pixel; 16] {
@@ -30,9 +31,21 @@ fn make_image(side_length: u32, pixels: [bmp::Pixel; 16]) -> bmp::Image {
 }
 
 fn main() {
-    let vec = md5::compute(b"ElectricCoffee's MD5-BMP Tool".into_iter());
-    let gray = make_pixels(vec);
-    let img = make_image(256, gray);
+    // handle console input
+    let args: Vec<String> = env::args().collect();
+
+    if args.len() < 3 {
+        println!("You did not supply enough arguments.");
+        return;
+    }
+    
+    let canvas_size = args[1].parse::<u32>().unwrap();
+    let bytes = args[2].clone().into_bytes();
+    
+    let checksum = md5::compute(bytes);
+    let pixels = make_pixels(checksum);
+    let img = make_image(canvas_size, pixels);
+    
     if let Err(err) = img.save("img.bmp") {
         println!("{}", err);
     }
