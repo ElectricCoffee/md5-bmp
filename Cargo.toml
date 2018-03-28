@@ -1,6 +1,6 @@
 [package]
 name = "md5-img"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Niko Lepka <slench102+git@gmail.com>"]
 
 description = "A tool for converting text into a bmp representation of their md5 checksum"
