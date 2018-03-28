@@ -1,6 +1,8 @@
 # md5-bmp
 A simple tool to convert text into a bitmap representation of its md5 checksum.
 
+To install simply type `cargo install md5-img` and let Cargo deal with the rest. If you do not have Cargo, you can get it here: [rustup.rs](https://rustup.rs).
+
 ## Example:
 The following image has been generated with the string "ElectricCoffee's MD5-BMP Tool",
 which generated the following checksum: `914329dd9233d2974886fe02ebc73dab`.
@@ -10,7 +12,7 @@ This checksum has then been fed into the algorithm to produce this image:
 ![img.png](https://github.com/ElectricCoffee/md5-bmp/blob/master/img.png)
 
 ## How to Use
-The command structure looks like this: `md5-bmp <height> <text> <filename>`
+The command structure looks like this: `md5-img <height> <text> <filename>`
 * Height is the image's height (and width) in pixels
 * Text is the text you want to convert to an image
 * Filename is the file you want it to save to.
