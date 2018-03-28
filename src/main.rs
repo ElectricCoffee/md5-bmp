@@ -34,19 +34,20 @@ fn main() {
     // handle console input
     let args: Vec<String> = env::args().collect();
 
-    if args.len() < 3 {
+    if args.len() < 4 {
         println!("You did not supply enough arguments.");
         return;
     }
     
     let canvas_size = args[1].parse::<u32>().unwrap();
     let bytes = args[2].clone().into_bytes();
+        let filename = args[3].clone();
     
     let checksum = md5::compute(bytes);
     let pixels = make_pixels(checksum);
     let img = make_image(canvas_size, pixels);
     
-    if let Err(err) = img.save("img.bmp") {
-        println!("{}", err);
+        if let Err(err) = img.save(filename) {
+            println!("{}", err);
     }
 }
