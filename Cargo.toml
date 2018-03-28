@@ -12,6 +12,8 @@ readme = "README.md"
 
 keywords = ["bmp", "image", "md5"]
 
+exclude = [ "*.bmp", "*.png" ]
+
 [dependencies]
 bmp = "0.3.0"
 md5 = "0.3.7"
