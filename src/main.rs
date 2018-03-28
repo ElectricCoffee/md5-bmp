@@ -52,6 +52,6 @@ fn main() {
             println!("{}", err);
         }
     } else {
-        println!("The \"{}\" is not a valid integer.", args[1]);
+        println!("The input \"{}\" is not a valid integer.", args[1]);
     }
 }
