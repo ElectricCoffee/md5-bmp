@@ -7,7 +7,7 @@ use std::env;
 fn make_pixels(digest: md5::Digest) -> [bmp::Pixel; 16] {
     let mut arr: [bmp::Pixel; 16] = [BLACK; 16];
     for (i, &data) in digest.0.into_iter().enumerate() {
-        arr[i] = bmp::Pixel{r: data, g: data, b: data};
+        arr[i] = bmp::Pixel::new(data, data, data);
     }
 
     arr
