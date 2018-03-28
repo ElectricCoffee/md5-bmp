@@ -1,0 +1,8 @@
+[package]
+name = "md5-img"
+version = "0.1.0"
+authors = ["Niko Lepka <slench102+git@gmail.com>"]
+
+[dependencies]
+bmp = "0.3.0"
+md5 = "0.3.7"
