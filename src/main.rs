@@ -39,15 +39,18 @@ fn main() {
         return;
     }
     
-    let canvas_size = args[1].parse::<u32>().unwrap();
-    let bytes = args[2].clone().into_bytes();
+    if let Ok(canvas_size) = args[1].parse::<u32>() {
+        let bytes = args[2].clone().into_bytes();
         let filename = args[3].clone();
     
-    let checksum = md5::compute(bytes);
-    let pixels = make_pixels(checksum);
-    let img = make_image(canvas_size, pixels);
+        let checksum = md5::compute(bytes);
+        let pixels = make_pixels(checksum);
+        let img = make_image(canvas_size, pixels);
     
         if let Err(err) = img.save(filename) {
             println!("{}", err);
+        }
+    } else {
+        println!("The \"{}\" is not a valid integer.", args[1]);
     }
 }
