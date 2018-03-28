@@ -30,7 +30,7 @@ fn make_image(side_length: u32, pixels: [bmp::Pixel; 16]) -> bmp::Image {
 }
 
 fn main() {
-    let vec = md5::compute(b"Nikolaj Lepka");
+    let vec = md5::compute(b"ElectricCoffee's MD5-BMP Tool".into_iter());
     let gray = make_pixels(vec);
     let img = make_image(256, gray);
     if let Err(err) = img.save("img.bmp") {
