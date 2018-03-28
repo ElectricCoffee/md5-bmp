@@ -18,6 +18,6 @@ The command structure looks like this: `md5-img <height> <text> <filename>`
 * Filename is the file you want it to save to.
   * Note that since the tool outputs bitmaps, it's recommended to give the file a .bmp extension.
   
-For example, typing in `md5-bmp 512 "hello world" hello-world.bmp` will generate this image:
+For example, typing in `md5-img 512 "hello world" hello-world.bmp` will generate this image:
 
 ![hello-world.png](https://github.com/ElectricCoffee/md5-bmp/blob/master/hello-world.png)
