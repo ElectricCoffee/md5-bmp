@@ -1,21 +1,23 @@
 extern crate md5;
 extern crate bmp;
+use md5::Digest;
+use bmp::{Pixel, Image};
 use bmp::consts::BLACK;
 use std::env;
 
 // Turns a digest into a 16-element array of pixels
-fn make_pixels(digest: md5::Digest) -> [bmp::Pixel; 16] {
-    let mut arr: [bmp::Pixel; 16] = [BLACK; 16];
+fn make_pixels(digest: Digest) -> [Pixel; 16] {
+    let mut arr: [Pixel; 16] = [BLACK; 16];
     for (i, &data) in digest.0.into_iter().enumerate() {
-        arr[i] = bmp::Pixel::new(data, data, data);
+        arr[i] = Pixel::new(data, data, data);
     }
 
     arr
 }
 
 // Creates a square image containing the 16 colours in the hash.
-fn make_image(side_length: u32, pixels: [bmp::Pixel; 16]) -> bmp::Image {
-    let mut img = bmp::Image::new(side_length, side_length);
+fn make_image(side_length: u32, pixels: [Pixel; 16]) -> Image {
+    let mut img = Image::new(side_length, side_length);
     let square_size: u32 = side_length / 4;
     for (x, y) in img.coordinates() {
         // clamp the x and y values to fit within the confines of the 4x4 color array
@@ -31,7 +33,6 @@ fn make_image(side_length: u32, pixels: [bmp::Pixel; 16]) -> bmp::Image {
 }
 
 fn main() {
-    // handle console input
     let args: Vec<String> = env::args().collect();
 
     if args.len() < 4 {
@@ -42,11 +43,11 @@ fn main() {
     if let Ok(canvas_size) = args[1].parse::<u32>() {
         let bytes = args[2].clone().into_bytes();
         let filename = args[3].clone();
-    
+        
         let checksum = md5::compute(bytes);
         let pixels = make_pixels(checksum);
         let img = make_image(canvas_size, pixels);
-    
+        
         if let Err(err) = img.save(filename) {
             println!("{}", err);
         }
