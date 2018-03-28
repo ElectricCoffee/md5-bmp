@@ -3,6 +3,15 @@ name = "md5-img"
 version = "0.1.0"
 authors = ["Niko Lepka <slench102+git@gmail.com>"]
 
+description = "A tool for converting text into a bmp representation of their md5 checksum"
+repository = "https://github.com/ElectricCoffee/md5-bmp.git"
+homepage = "https://github.com/ElectricCoffee/md5-bmp"
+
+licence = "BSD-3-Clause"
+readme = "README.md"
+
+keywords = ["bmp", "image", "md5"]
+
 [dependencies]
 bmp = "0.3.0"
 md5 = "0.3.7"
